@@ -7,7 +7,7 @@ from file import *
 
 app = Flask(__name__)
 
-GITHUB_TOKEN = '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'
+GITHUB_TOKEN = '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'
 GTHUB = Github(GITHUB_TOKEN)
 
 orgs = 'orgs.json'
@@ -25,7 +25,7 @@ def request(r):
     score = followers + public_repos
 
     org = {'login': login, 'name': name, 'score': score}
-
+    print(org)
     store_org(orgs, org)
 
     for org in read_file(orgs):
@@ -39,19 +39,19 @@ def delete(r):
     return file
 
 
-@app.route('/', methods=['GET'])
+@app.route('/orgs', methods=['GET'])
 def get_orgs():
     return jsonify(read_file(orgs))
 
 
-@app.route('/<string:arg>', methods=['GET'])
+@app.route('/orgs/<string:arg>', methods=['GET'])
 def get_org(arg):
     global login
     login = arg
     return jsonify(request(GTHUB))
 
 
-@app.route('/<string:arg>', methods=['DELETE'])
+@app.route('/orgs/<string:arg>', methods=['DELETE'])
 def delete_org(arg):
     global login
     login = arg
