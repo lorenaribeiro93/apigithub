@@ -7,7 +7,7 @@ from file import *
 
 app = Flask(__name__)
 
-GITHUB_TOKEN = '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'
+GITHUB_TOKEN = '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'
 GTHUB = Github(GITHUB_TOKEN)
 
 orgs = 'orgs.json'
