@@ -39,19 +39,19 @@ def delete(r):
     return file
 
 
-@app.route('/orgs', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_orgs():
     return jsonify(read_file(orgs))
 
 
-@app.route('/orgs/<string:arg>', methods=['GET'])
+@app.route('/<string:arg>', methods=['GET'])
 def get_org(arg):
     global login
     login = arg
     return jsonify(request(GTHUB))
 
 
-@app.route('/orgs/<string:arg>', methods=['DELETE'])
+@app.route('/<string:arg>', methods=['DELETE'])
 def delete_org(arg):
     global login
     login = arg
